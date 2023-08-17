@@ -1,0 +1,15 @@
+.movielist__title {
+    margin-left: 1rem;
+    font-size: 2rem;
+}
+.movielist__posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    padding: 20px;
+    align-items: center;
+}
+.movielist__posters::-webkit-scrollbar {
+    display: none;
+}

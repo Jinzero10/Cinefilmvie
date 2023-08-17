@@ -1,0 +1,209 @@
+.navbar {
+    z-index: 100;
+    position: fixed;
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-inline: 4rem;
+    top: 0;
+    background: transparent;
+
+    /*Animation*/
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+}
+.active {
+    background-color: rgba(121, 121, 121, 0.7);
+}
+.hamburger__menu {
+    cursor: pointer;
+    color: white;
+    font-size: 2rem;
+}
+.links__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.link__acc,
+.close__icon {
+    display: none;
+}
+.user__email {
+    margin-right: 1rem;
+    color: white;
+}
+.bg__navbar {
+    background: black;
+}
+.site__Logo {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.7rem !important;
+    margin-right: 2rem !important;
+    color: red !important;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.links {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.links > * {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.3rem 0.4rem;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border-radius: 2px;
+}
+.link__icon {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.link__icon > * {
+    cursor: pointer;
+}
+.hamburger__menu {
+    display: none;
+}
+.profile__container {
+    display: flex;
+    align-items: center;
+}
+.account__image {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+.nav__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.nav__btn > * {
+    text-decoration: none;
+}
+.navbar button {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-right: 1rem;
+}
+.signin {
+    background: transparent;
+    color: white;
+}
+.signup {
+    border-radius: 2px;
+    background: red;
+    color: white;
+}
+.dropdownlist {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 15rem;
+    height: 6rem;
+    right: 10%;
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    top: 0;
+    border-radius: 2px;
+}
+.dropdown__btn {
+    border: 1px solid gray;
+    margin-top: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 2px;
+}
+.logout_btn {
+    color: white;
+    background: red;
+    border: none;
+}
+.dropdownlist > *:hover {
+    transform: scale(1.1);
+}
+@media only screen and (min-width: 320px) and (max-width: 720px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+    }
+    .links__container {
+        padding: 1rem 1rem;
+        position: absolute;
+        top: 0;
+        height: 22rem;
+        width: 20rem;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0.6rem;
+        background-color: #181818;
+        transition: all 0.5s ease-out;
+        left: -100%;
+    }
+    .active {
+        border-left: 3px solid red;
+        border-bottom: none;
+        background-color: transparent;
+    }
+    .hamburger__menu {
+        display: block;
+    }
+    .links__container#hidden {
+        left: 0;
+    }
+    .links {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: 1fr;
+    }
+    .links > * {
+        padding-left: 0.3rem;
+    }
+    .link__acc > * {
+        width: 100%;
+        cursor: pointer;
+        text-decoration: none;
+        color: #ffffff;
+        text-align: center;
+    }
+    .nav__btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .close__icon {
+        color: white;
+        font-size: 2rem;
+        right: 0;
+    }
+    .profile__container {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 1rem;
+    }
+    .link__acc,
+    .close__icon {
+        display: block;
+    }
+    .account__image {
+        width: 3rem;
+        height: 3rem;
+    }
+    .dropdownlist {
+        display: none !important;
+    }
+    .dropdown__icon {
+        display: none;
+    }
+}

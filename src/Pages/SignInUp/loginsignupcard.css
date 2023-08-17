@@ -1,0 +1,70 @@
+.sign__card {
+    position: relative;
+    z-index: 2;
+    width: min(80vw, 450px);
+    height: 85vh;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    margin-inline: auto;
+    text-align: left;
+    border-radius: 5px;
+    padding-inline: min(6vw, 4rem);
+    margin-top: 1.5rem;
+}
+.sign__header {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+.sign__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.error {
+    padding-left: 4rem;
+    border: 1px solid red;
+    background-color: red;
+    margin-bottom: 1rem;
+}
+
+.sign__input {
+    padding: 1rem 0.5rem;
+    width: 100%;
+    border-radius: 3px;
+    border: 0;
+    background-color: #333333;
+    color: white;
+}
+.sign__btn {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 3px;
+    background-color: #e50914;
+    color: white;
+    margin-top: 2rem;
+    border: none;
+}
+.signform__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(145, 140, 140);
+    font-size: 0.8rem;
+}
+.subcribe {
+    color: rgb(145, 140, 140);
+    font-size: 0.8rem;
+}
+.subcribe__link {
+    font-weight: 900;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+.subcribe__link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
