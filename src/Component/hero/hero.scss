@@ -1,0 +1,104 @@
+@import "../../App.scss";
+.hero {
+    max-width: 100%;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+
+    .container {
+        max-width: 100%;
+        height: 100%;
+        margin: auto;
+
+        .textContainer {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+            padding-inline: 100px;
+            background: linear-gradient(
+                to right,
+                var(--color-secondary-bg),
+                transparent
+            );
+            @include mobile {
+                padding-inline: 50px;
+            }
+
+            .rating {
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                font-size: 17px;
+                font-weight: bold;
+            }
+            h1 {
+                font-size: 50px;
+                color: #ffa812;
+                line-height: 1;
+
+                @include mobile {
+                    font-size: 35px;
+                }
+            }
+            .description {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                max-width: 450px;
+
+                .overview {
+                    color: var(--color-light);
+
+                    @include mobile {
+                        line-height: 1.2;
+                    }
+                }
+
+                @include mobile {
+                    font-size: 14px;
+                }
+            }
+
+            .heroBtn {
+                display: flex;
+                gap: 10px;
+
+                button {
+                    padding: 7px 20px;
+                    cursor: pointer;
+                    background: transparent;
+                    border: 2px solid var(--color-primary);
+                    border-radius: 5px;
+                    font-weight: bold;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    gap: 3px;
+                }
+
+                button:hover {
+                    color: var(--color-primary-bg);
+                    background-color: var(--color-primary);
+                }
+            }
+        }
+    }
+    .imageContainer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -10;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

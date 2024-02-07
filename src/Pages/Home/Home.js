@@ -1,57 +1,74 @@
 import React from "react";
-import Banner from "../../Component/HomeComp/Banner/Banner";
-import requests from "../../requests";
-import Row from "../../Component/HomeComp/Row/Row";
-import Navbar from "../../Component/Navbar";
+import "./home.scss";
+import requests from "../../features/app/requests";
+import Hero from "../../Component/hero/Hero";
+import Carousel from "../../Component/moviecarousel/carousel";
+import Title from "../../Component/title/Title";
+import { useSearchContext } from "../../Context/handleSearch";
+import SearchResult from "../../Component/search/SearchResult";
 
 const Home = () => {
-    return (
-        <>
-            <Navbar />
-            <Banner />
-            <Row
-                rowId="1"
-                title="NETFLIX ORIGINALS"
-                fetchURL={requests.requestOriginals}
-                isLargeRow
-            />
-            <Row
-                rowId="2"
-                title="Trending Now"
-                fetchURL={requests.requestTrending}
-            />
-            <Row
-                rowId="3"
-                title="Top Rated"
-                fetchURL={requests.requestTopRated}
-            />
-            <Row
-                rowId="4"
-                title="Action Movies"
-                fetchURL={requests.requestAction}
-            />
+    const { searchResults } = useSearchContext();
 
-            <Row
-                rowId="5"
-                title="Comedy Movies"
-                fetchURL={requests.requestComedy}
-            />
-            <Row
-                rowId="6"
-                title="Horror Movies"
-                fetchURL={requests.requestHorror}
-            />
-            <Row
-                rowId="7"
-                title="Romance Movies"
-                fetchURL={requests.requestRomance}
-            />
-            <Row
-                rowId="8"
-                title="Documentaries Movies"
-                fetchURL={requests.requestDocumentaries}
-            />
-        </>
+    return (
+        <main className="home">
+            {searchResults.length > 0 ? (
+                <SearchResult movies={searchResults} />
+            ) : (
+                <>
+                    <section>
+                        <Hero />
+                    </section>
+                    <section>
+                        <Title mainTitle="NETFLIX ORIGINALS" />
+                        <Carousel
+                            rowId="1"
+                            fetchURL={requests.requestOriginals}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Trending Now" />
+                        <Carousel
+                            rowId="2"
+                            fetchURL={requests.requestTrending}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Top Rated" />
+                        <Carousel
+                            rowId="3"
+                            fetchURL={requests.requestTopRated}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Action" />
+                        <Carousel rowId="4" fetchURL={requests.requestAction} />
+                    </section>
+                    <section>
+                        <Title mainTitle="Comedy" />
+                        <Carousel rowId="5" fetchURL={requests.requestComedy} />
+                    </section>
+                    <section>
+                        <Title mainTitle="Horror" />
+                        <Carousel rowId="6" fetchURL={requests.requestHorror} />
+                    </section>
+                    <section>
+                        <Title mainTitle="Romance" />
+                        <Carousel
+                            rowId="7"
+                            fetchURL={requests.requestRomance}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Documentaries" />
+                        <Carousel
+                            rowId="8"
+                            fetchURL={requests.requestDocumentaries}
+                        />
+                    </section>
+                </>
+            )}
+        </main>
     );
 };
 

@@ -1,20 +1,24 @@
 import React from "react";
 import SavedMovies from "../../Component/SavedMovies/SavedMovies";
-import "./mylist.css";
-import Navbar from "../../Component/Navbar";
+import Title from "../../Component/title/Title";
+import { useSearchContext } from "../../Context/handleSearch";
+import SearchResult from "../../Component/search/SearchResult";
 
 export const MyList = () => {
+    const { searchResults } = useSearchContext();
     return (
-        <>
-            <Navbar />
-            <div className="mylist">
-                <div className="mylist__header">
-                    <h1>My List</h1>
-                </div>
-                <div className="movies">
-                    <SavedMovies />
-                </div>
-            </div>
-        </>
+        <main>
+            {searchResults.length > 0 ? (
+                <SearchResult movies={searchResults} />
+            ) : (
+                <>
+                    <Title title="My List" />
+                    <section>
+                        <Title mainTitle="Saved Movies" />
+                        <SavedMovies />
+                    </section>
+                </>
+            )}
+        </main>
     );
 };

@@ -1,0 +1,88 @@
+@import "../../App.scss";
+
+.search {
+    cursor: pointer;
+    position: absolute;
+    width: 45%;
+    height: 60px;
+    display: flex;
+    gap: 5px;
+    left: 270px;
+    align-items: center;
+    border-radius: 5px;
+    padding-inline: 5px;
+    overflow: hidden;
+    background-color: var(--color-secondary-bg);
+    opacity: 0;
+    transform: translateY(200%);
+    transition: all 0.5s ease-in-out;
+
+    @include tablet {
+        left: 200px;
+    }
+    @include mobile {
+        width: 60%;
+        left: 90px;
+    }
+    .icon {
+        color: var(--color-primary);
+        font-size: 30px;
+        padding-inline: 5px;
+        background: none;
+        height: 100%;
+    }
+    .iconX {
+        display: none;
+        font-size: 40px;
+        color: var(--color-light);
+
+        @include mobile {
+            display: block;
+        }
+    }
+    input {
+        height: 100%;
+        width: 100%;
+        padding-inline: 15px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--color-primary);
+    }
+
+    ::placeholder {
+        color: var(--color-light);
+    }
+}
+.display {
+    border: 1px solid var(--color-primary);
+    opacity: 1;
+    transform: translateY(0%);
+}
+.searchResult {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 15px;
+    padding-inline: 10px;
+    margin-top: 150px;
+
+    @include mobile {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    .card {
+        width: unset;
+
+        @include mobile {
+            height: 250px;
+        }
+        .imageContainer {
+            img {
+                @include mobile {
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

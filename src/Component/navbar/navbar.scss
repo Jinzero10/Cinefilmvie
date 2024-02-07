@@ -1,0 +1,209 @@
+@import "../../App.scss";
+
+.navbar {
+    position: relative;
+    width: 100%;
+    position: fixed;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 4rem;
+    top: 0;
+    background: transparent;
+    z-index: 999;
+    overflow: hidden;
+
+    @include tablet {
+        padding-inline: 1rem;
+    }
+
+    @include mobile {
+        padding-inline: 2rem;
+    }
+
+    .siteLogo {
+        cursor: pointer;
+        @include mobile {
+            display: none;
+        }
+
+        a {
+            font-size: 1.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--color-primary);
+
+            @include tablet {
+                font-size: 1.3rem;
+            }
+        }
+    }
+    .linksContainer {
+        position: relative;
+        display: flex;
+        gap: 20px;
+
+        @include mobile {
+            position: unset;
+            flex-direction: column;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            min-height: 100%;
+            text-align: center;
+            padding-inline: 5px;
+            transition: all 0.5s ease-in;
+            transform: translateX(-100%);
+            border: 1px solid var(--color-light);
+            background-color: var(--color-bg-variant);
+            backdrop-filter: blur(50px);
+        }
+
+        a {
+            color: var(--color-light);
+            font-size: 20px;
+            font-weight: 500;
+            padding: 15px;
+            border-radius: 2px;
+            transition: all 0.2s linear;
+
+            @include tablet {
+                font-size: 16px;
+            }
+        }
+        a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-secondary-bg);
+        }
+        .active {
+            border-bottom: 3px solid var(--color-primary);
+
+            @include mobile {
+                border-left: 3px solid var(--color-primary);
+                border-bottom: none;
+            }
+        }
+        .closeMenu {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            cursor: pointer;
+            color: white;
+            font-size: 2.5rem;
+
+            @include mobile {
+                display: block;
+            }
+        }
+
+        .mobileExtra {
+            display: none;
+
+            @include mobile {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+            }
+            p {
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: 500;
+                padding: 15px;
+                color: white;
+            }
+            p:hover {
+                background-color: var(--color-primary);
+            }
+        }
+    }
+    .hidden {
+        a {
+            opacity: 0;
+            pointer-events: none;
+
+            @include mobile {
+                opacity: 1;
+                pointer-events: unset;
+            }
+        }
+    }
+    #hidden {
+        transform: translateX(0%);
+    }
+    .searchWrapper {
+        cursor: pointer;
+        margin-right: 20px;
+
+        @include mobile {
+            margin-right: 0px;
+        }
+        .iconX {
+            font-size: 40px;
+            color: var(--color-light);
+
+            @include mobile {
+                display: none;
+            }
+        }
+        .icon {
+            font-size: 25px;
+            color: var(--color-light);
+        }
+    }
+    .onlineContainer {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        @include mobile {
+            display: none;
+        }
+
+        p {
+            cursor: pointer;
+            color: var(--color-light);
+            text-transform: capitalize;
+            font-weight: 500;
+
+            @include tablet {
+                font-size: 14px;
+            }
+        }
+        button {
+            padding-block: 10px;
+            padding-inline: 15px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            color: var(--color-secondary-bg);
+            background-color: var(--color-primary);
+            border: none;
+            opacity: 0.9;
+        }
+        button:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+            opacity: 1;
+        }
+    }
+
+    .hamburger__menu {
+        display: none;
+        cursor: pointer;
+        color: white;
+        font-size: 2rem;
+
+        @include mobile {
+            display: block;
+        }
+    }
+}
+.bg__navbar {
+    background-color: rgb(17, 17, 50, 0.8);
+}

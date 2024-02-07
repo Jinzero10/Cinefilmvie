@@ -1,64 +1,78 @@
 import React from "react";
-import { TvShowRow } from "../../Component/TvShow/TvShowRow";
-import requests from "../../requests";
-import Navbar from "../../Component/Navbar";
+import requests from "../../features/app/requests";
+import Carousel from "../../Component/moviecarousel/carousel";
+import Title from "../../Component/title/Title";
+import { useSearchContext } from "../../Context/handleSearch";
+import SearchResult from "../../Component/search/SearchResult";
 
 export const TvShows = () => {
-    return (
-        <>
-            <Navbar />
-            <TvShowRow
-                rowId="1"
-                title="Tv Shows"
-                fetchURL={requests.requestTv}
-                isLargeRow
-            />
-            <TvShowRow
-                rowId="2"
-                title="Tv Trending"
-                fetchURL={requests.requestTrendingTv}
-            />
-            <TvShowRow
-                rowId="3"
-                title="Tv TopRated"
-                fetchURL={requests.requestTvTopRated}
-            />
-            <TvShowRow
-                rowId="4"
-                title="Airing Today"
-                fetchURL={requests.requestAiringToday}
-            />
-            <TvShowRow
-                rowId="5"
-                title="Action & Adventure"
-                fetchURL={requests.requestActionAdventure}
-            />
+    const { searchResults } = useSearchContext();
 
-            <TvShowRow
-                rowId="6"
-                title="Tv Kids"
-                fetchURL={requests.requestKids}
-            />
-            <TvShowRow
-                rowId="7"
-                title="Tv Reality"
-                fetchURL={requests.requestReality}
-            />
-            <TvShowRow
-                rowId="8"
-                title="Tv Soap"
-                fetchURL={requests.requestSoap}
-            />
-            <TvShowRow
-                rowId="9"
-                title="War & Politics"
-                fetchURL={requests.requestPolitics}
-            />
-            <TvShowRow
-                rowId="10"
-                title="Tv Talk"
-                fetchURL={requests.requestTalk}
-            />
-        </>
+    return (
+        <main>
+            {searchResults.length > 0 ? (
+                <SearchResult movies={searchResults} />
+            ) : (
+                <>
+                    <Title title="TV Shows" />
+                    <section>
+                        <Title mainTitle="Trending" />
+                        <Carousel
+                            rowId="1"
+                            fetchURL={requests.requestTrendingTv}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Top Rated" />
+                        <Carousel
+                            rowId="2"
+                            fetchURL={requests.requestTvTopRated}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Airing Today" />
+                        <Carousel
+                            rowId="3"
+                            title="Airing Today"
+                            fetchURL={requests.requestAiringToday}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Action & Adventure" />
+                        <Carousel
+                            rowId="4"
+                            fetchURL={requests.requestActionAdventure}
+                        />
+                    </section>
+
+                    <section>
+                        <Title mainTitle="Kids" />
+                        <Carousel rowId="5" fetchURL={requests.requestKids} />
+                    </section>
+                    <section>
+                        <Title mainTitle="Reality" />
+                        <Carousel
+                            rowId="6"
+                            fetchURL={requests.requestReality}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Saop" />
+                        <Carousel rowId="7" fetchURL={requests.requestSoap} />
+                    </section>
+                    <section>
+                        <Title mainTitle="War & Politics" />
+                        <Carousel
+                            rowId="8"
+                            fetchURL={requests.requestPolitics}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Talk Shows" />
+                        <Carousel rowId="9" fetchURL={requests.requestTalk} />
+                    </section>
+                </>
+            )}
+        </main>
     );
 };

@@ -1,55 +1,72 @@
 import React from "react";
-import MovieRow from "../../Component/Movies/MovieRow";
-import requests from "../../requests";
-import Navbar from "../../Component/Navbar";
+import requests from "../../features/app/requests";
+import Title from "../../Component/title/Title";
+import Carousel from "../../Component/moviecarousel/carousel";
+import { useSearchContext } from "../../Context/handleSearch";
+import SearchResult from "../../Component/search/SearchResult";
 
 export const Movies = () => {
-    return (
-        <>
-            <Navbar />
-            <MovieRow
-                rowId="1"
-                title="Movies"
-                fetchURL={requests.requestMovies}
-                isLargeRow
-            />
-            <MovieRow
-                rowId="2"
-                title="Popular"
-                fetchURL={requests.requestPopular}
-            />
-            <MovieRow
-                rowId="3"
-                title="Upcoming"
-                fetchURL={requests.requestUpcoming}
-            />
-            <MovieRow
-                rowId="4"
-                title="Animation"
-                fetchURL={requests.requestAnimation}
-            />
+    const { searchResults } = useSearchContext();
 
-            <MovieRow
-                rowId="5"
-                title="Adventure"
-                fetchURL={requests.requestAdventure}
-            />
-            <MovieRow
-                rowId="6"
-                title="Crime"
-                fetchURL={requests.requestCrime}
-            />
-            <MovieRow rowId="7" title="War" fetchURL={requests.requestWar} />
-            <MovieRow
-                rowId="8"
-                title="Mystery"
-                fetchURL={requests.requestMystery}
-            />
-            <MovieRow
-                rowId="9"
-                title="Fantasy"
-                fetchURL={requests.requestFantasy}
-            />
-        </>
+    return (
+        <main className="movies">
+            {searchResults.length > 0 ? (
+                <SearchResult movies={searchResults} />
+            ) : (
+                <>
+                    <Title title="Movies" />
+                    <section>
+                        <Title mainTitle="Popular" />
+                        <Carousel
+                            rowId="1"
+                            fetchURL={requests.requestPopular}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Upcoming" />
+                        <Carousel
+                            rowId="2"
+                            fetchURL={requests.requestUpcoming}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Animation" />
+                        <Carousel
+                            rowId="3"
+                            fetchURL={requests.requestAnimation}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Adventure" />
+                        <Carousel
+                            rowId="4"
+                            fetchURL={requests.requestAdventure}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Crime" />
+                        <Carousel rowId="5" fetchURL={requests.requestCrime} />
+                    </section>
+                    <section>
+                        <Title mainTitle="War" />
+                        <Carousel rowId="6" fetchURL={requests.requestWar} />
+                    </section>
+                    <section>
+                        <Title mainTitle="Mystery" />
+                        <Carousel
+                            rowId="7"
+                            fetchURL={requests.requestMystery}
+                        />
+                    </section>
+                    <section>
+                        <Title mainTitle="Fantasy" />
+                        <Carousel
+                            rowId="8"
+                            fetchURL={requests.requestFantasy}
+                        />
+                    </section>
+                </>
+            )}
+        </main>
     );
 };

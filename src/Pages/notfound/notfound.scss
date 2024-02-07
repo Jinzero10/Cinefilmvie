@@ -1,0 +1,33 @@
+.notfound {
+    height: 100vh;
+    display: flex;
+
+    .container {
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 300px;
+
+        padding: 50px;
+        text-align: center;
+        margin: auto;
+        background-color: var(--color-primary);
+        border-radius: 20px;
+        color: var(--color-secondary-bg);
+
+        h1 {
+            font-size: 90px;
+            font-weight: bold;
+        }
+        button {
+            cursor: pointer;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            color: var(--color-secondary-bg);
+        }
+    }
+}

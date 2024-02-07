@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
+import "./savedmovies.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../features/userSlice";
+import { selectUser } from "../../features/user/userSlice";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../features/app/api/firebase";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SavedMovies = () => {
+    const navigate = useNavigate();
     const user = useSelector(selectUser);
     const [movies, setMovies] = useState([]);
+    const [mobile, setMobile] = useState(false);
 
     const img_url = "https://image.tmdb.org/t/p/w500/";
 
@@ -27,35 +32,67 @@ const SavedMovies = () => {
             });
         } catch (error) {
             console.log(error);
+            toast.error(error);
         }
     };
 
+    useEffect(() => {
+        const handlePosters = () => {
+            if (window.innerWidth <= 800) {
+                setMobile(true);
+            } else {
+                setMobile(false);
+            }
+        };
+        handlePosters();
+
+        window.addEventListener("resize", handlePosters);
+
+        return () => window.removeEventListener("resize", handlePosters);
+    }, []);
+
     return (
-        <>
-            <h2 className="saved__title">Saved Shows</h2>
-            <div className="saved__posters">
-                {movies.map((movie) => (
-                    <div className="saved__moviedetails" key={movie.id}>
+        <div className="savedCard">
+            {movies.map((movie) => (
+                <div className="container" key={movie.id}>
+                    <div
+                        className="imageContainer"
+                        onClick={() =>
+                            navigate("/viewmovie", {
+                                state: { movie: movies },
+                            })
+                        }
+                    >
                         <img
-                            className="saved__poster"
-                            src={`${img_url}${movie?.img}`}
+                            src={`${img_url}${
+                                mobile ? movie.img.poster : movie.img.backdrop
+                            }`}
                             alt={movie.title}
                         />
-                        <div className="saved__desc">
-                            <p
-                                onClick={() => deleteMovie(movie.id)}
-                                className="delete__saved"
+                    </div>
+
+                    <div className="textContainer">
+                        <div
+                            onClick={() => deleteMovie(movie.id)}
+                            className="delete"
+                        >
+                            <AiOutlineClose size={20} />
+                        </div>
+                        <div className="wrapper">
+                            <h2
+                                onClick={() =>
+                                    navigate("/viewmovie", {
+                                        state: { movie: movies },
+                                    })
+                                }
                             >
-                                <AiOutlineClose size={20} />
-                            </p>
-                            <h1 className="saved__movietitle">
                                 {movie?.title}
-                            </h1>
+                            </h2>
                         </div>
                     </div>
-                ))}
-            </div>
-        </>
+                </div>
+            ))}
+        </div>
     );
 };
 

@@ -1,0 +1,26 @@
+@import "./../../App.scss";
+
+.title {
+    h2 {
+        font-size: 30px;
+        padding-inline: 15px;
+        color: var(--color-primary);
+    }
+}
+.pageTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+
+    h1 {
+        font-size: 50px;
+        color: var(--color-primary);
+
+        @include mobile {
+            font-size: 39px;
+        }
+    }
+}
