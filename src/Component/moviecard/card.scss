@@ -10,8 +10,8 @@
     overflow: hidden;
 
     @include mobile {
-        width: 200px;
-        height: 300px;
+        width: 150px;
+        height: 250px;
     }
 
     .textContainer {
@@ -78,10 +78,6 @@
             object-fit: cover;
             background-color: var(--color-secondary-bg);
             border: none;
-
-            @include mobile {
-                object-fit: contain;
-            }
         }
     }
 }

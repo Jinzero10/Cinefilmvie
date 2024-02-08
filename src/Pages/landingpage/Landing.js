@@ -77,9 +77,3 @@ const Landing = () => {
 };
 
 export default Landing;
-{
-    /* <section>
-                <Title mainTitle="Movies" />
-                <Carousel rowId="1" fetchURL={requests.requestMovies} />
-            </section> */
-}

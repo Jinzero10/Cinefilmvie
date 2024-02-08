@@ -1,14 +1,14 @@
 @import "../../App.scss";
 .savedCard {
     max-width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
     padding-inline: 10px;
     margin-top: 10px;
 
     @include mobile {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 10px;
     }
 
@@ -21,6 +21,7 @@
         overflow: hidden;
 
         @include mobile {
+            width: 150px;
             height: 250px;
         }
 

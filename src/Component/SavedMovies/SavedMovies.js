@@ -50,19 +50,12 @@ const SavedMovies = () => {
 
         return () => window.removeEventListener("resize", handlePosters);
     }, []);
-
+    console.log(mobile);
     return (
         <div className="savedCard">
             {movies.map((movie) => (
                 <div className="container" key={movie.id}>
-                    <div
-                        className="imageContainer"
-                        onClick={() =>
-                            navigate("/viewmovie", {
-                                state: { movie: movies },
-                            })
-                        }
-                    >
+                    <div className="imageContainer">
                         <img
                             src={`${img_url}${
                                 mobile ? movie.img.poster : movie.img.backdrop
