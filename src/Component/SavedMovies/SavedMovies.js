@@ -6,10 +6,8 @@ import { selectUser } from "../../features/user/userSlice";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../features/app/api/firebase";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const SavedMovies = () => {
-    const navigate = useNavigate();
     const user = useSelector(selectUser);
     const [movies, setMovies] = useState([]);
     const [mobile, setMobile] = useState(false);
@@ -50,7 +48,7 @@ const SavedMovies = () => {
 
         return () => window.removeEventListener("resize", handlePosters);
     }, []);
-    console.log(mobile);
+
     return (
         <div className="savedCard">
             {movies.map((movie) => (
@@ -72,15 +70,7 @@ const SavedMovies = () => {
                             <AiOutlineClose size={20} />
                         </div>
                         <div className="wrapper">
-                            <h2
-                                onClick={() =>
-                                    navigate("/viewmovie", {
-                                        state: { movie: movies },
-                                    })
-                                }
-                            >
-                                {movie?.title}
-                            </h2>
+                            <h2>{movie?.title}</h2>
                         </div>
                     </div>
                 </div>
